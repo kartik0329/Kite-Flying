@@ -9,18 +9,9 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(#87ceeb, #e0f7ff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(to top, #ff512f, #f09819, #87ceeb);
   overflow: hidden;
   font-family: Arial, sans-serif;
-}
-
-.scene {
-  position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 /* Text */
@@ -29,61 +20,22 @@ body {
   top: 20px;
   width: 100%;
   text-align: center;
-  font-size: 26px;
-  color: #333;
+  font-size: 28px;
+  color: #fff;
   animation: fade 2s infinite alternate;
-}
-
-/* Kite */
-.kite {
-  position: absolute;
-  top: 100px;
-  left: -100px;
-  width: 60px;
-  height: 60px;
-  background: red;
-  transform: rotate(45deg);
-  animation: fly 6s linear infinite;
-}
-
-.kite::before,
-.kite::after {
-  content: "";
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: red;
-}
-
-.kite::before {
-  left: -30px;
-}
-
-.kite::after {
-  top: -30px;
-}
-
-/* Tail */
-.tail {
-  position: absolute;
-  width: 3px;
-  height: 120px;
-  background: #444;
-  top: 60px;
-  left: 28px;
 }
 
 /* Person */
 .person {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .head {
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   background: #ffcc99;
   border-radius: 50%;
   margin: auto;
@@ -91,16 +43,57 @@ body {
 
 .body {
   width: 8px;
-  height: 40px;
-  background: #000;
+  height: 45px;
+  background: #222;
   margin: auto;
 }
 
+/* Kite */
+.kite {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transform: rotate(45deg);
+  animation: fly 8s linear infinite, swing 2s ease-in-out infinite;
+}
+
+.kite::before,
+.kite::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: inherit;
+}
+
+.kite::before { left: -25px; }
+.kite::after { top: -25px; }
+
+.tail {
+  position: absolute;
+  width: 3px;
+  height: 100px;
+  background: #444;
+  top: 50px;
+  left: 24px;
+}
+
+/* Different kites */
+.k1 { background: red; animation-delay: 0s; }
+.k2 { background: yellow; animation-delay: 2s; }
+.k3 { background: lime; animation-delay: 4s; }
+
 /* Animations */
 @keyframes fly {
-  0% { left: -100px; top: 150px; }
-  50% { left: 60%; top: 50px; }
-  100% { left: 110%; top: 120px; }
+  0% { left: -10%; top: 180px; }
+  50% { left: 50%; top: 60px; }
+  100% { left: 110%; top: 140px; }
+}
+
+@keyframes swing {
+  0% { transform: rotate(40deg); }
+  50% { transform: rotate(50deg); }
+  100% { transform: rotate(40deg); }
 }
 
 @keyframes fade {
@@ -112,21 +105,31 @@ body {
 
 <body>
 
-<div class="scene">
-  <div class="text">I am flying kite 🪁</div>
-
-  <div class="kite">
-    <div class="tail"></div>
-  </div>
-
-  <div class="person">
-    <div class="head"></div>
-    <div class="body"></div>
-  </div>
+<div class="text" id="msg">Karthik Bhai Dosto ke sath Patang🪁 Uda Rahe hai.
+    Free ho kar call karenge.
 </div>
 
+<!-- Person -->
+<div class="person">
+  <div class="head"></div>
+  <div class="body"></div>
+</div>
+
+<!-- Multiple Kites -->
+<div class="kite k1"><div class="tail"></div></div>
+<div class="kite k2"><div class="tail"></div></div>
+<div class="kite k3"><div class="tail"></div></div>
+
+<!-- Wind Sound -->
+<audio id="wind" autoplay loop>
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-wind-whistling-1237.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-console.log("Flying Kite Animation Loaded");
+// Auto text change
+setTimeout(() => {
+  document.getElementById("msg").innerText = "Back later 👋";
+}, 5000);
 </script>
 
 </body>
