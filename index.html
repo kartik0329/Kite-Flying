@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flying Kite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(#87ceeb, #e0f7ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Text */
+.text {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  color: #333;
+  animation: fade 2s infinite alternate;
+}
+
+/* Kite */
+.kite {
+  position: absolute;
+  top: 100px;
+  left: -100px;
+  width: 60px;
+  height: 60px;
+  background: red;
+  transform: rotate(45deg);
+  animation: fly 6s linear infinite;
+}
+
+.kite::before,
+.kite::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: red;
+}
+
+.kite::before {
+  left: -30px;
+}
+
+.kite::after {
+  top: -30px;
+}
+
+/* Tail */
+.tail {
+  position: absolute;
+  width: 3px;
+  height: 120px;
+  background: #444;
+  top: 60px;
+  left: 28px;
+}
+
+/* Person */
+.person {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.head {
+  width: 25px;
+  height: 25px;
+  background: #ffcc99;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.body {
+  width: 8px;
+  height: 40px;
+  background: #000;
+  margin: auto;
+}
+
+/* Animations */
+@keyframes fly {
+  0% { left: -100px; top: 150px; }
+  50% { left: 60%; top: 50px; }
+  100% { left: 110%; top: 120px; }
+}
+
+@keyframes fade {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+  <div class="text">I am flying kite 🪁</div>
+
+  <div class="kite">
+    <div class="tail"></div>
+  </div>
+
+  <div class="person">
+    <div class="head"></div>
+    <div class="body"></div>
+  </div>
+</div>
+
+<script>
+console.log("Flying Kite Animation Loaded");
+</script>
+
+</body>
+</html>
